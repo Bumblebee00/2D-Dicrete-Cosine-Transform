@@ -1,4 +1,4 @@
-This code performs the [2-d Discrete Cosine Transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform#Multidimensional_DCTs) on images. It can save to disk the spectrum of a image in png or binary format, and it can perform the inverse DCT to reconstruct the image from the spectrum (or a modified version of it). It can also generate the basis images for a certain width and height, by performig the inverse DCT on spectums with only one non-zero element.
+This code performs the [2D Discrete Cosine Transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform#Multidimensional_DCTs) on images. It can save to disk the spectrum of a image in png or binary format, and it can perform the inverse DCT to reconstruct the image from the spectrum (or a modified version of it). It can also generate the basis images for a certain width and height, by performig the inverse DCT on spectums with only one non-zero element.
 
 Here are some images generated from various spectra:
 
@@ -15,3 +15,5 @@ no vertical low frequencies | ![](g_modified_spectrum4.png) | ![](g_output4.png)
 only high frequencies | ![](g_modified_spectrum5.png) | ![](g_output5.png)
 only low horizontal and high vertical frequencies | ![](g_modified_spectrum6.png) | ![](g_output6.png)
 only high horizontal and low vertical frequencies | ![](g_modified_spectrum7.png) | ![](g_output7.png)
+
+the gorilla took 15 minutes to spectralize.
