@@ -46,7 +46,7 @@ int main(){
     clock_t begin = clock();
     // generate_bases(8, 16);
 
-    const char *name = "pavimento"; // Base name for images
+    const char *name = "palace"; // Base name for images
     const char *ext = ".png"; // Extension for images
     char filename[MAX_C];
     sprintf(filename, "%s%s", name, ext);
@@ -61,39 +61,39 @@ int main(){
     char output_name[MAX_C];
     sprintf(output_name, "%s_output%s", name, ext);
 
-//     // load image
-//     int width, height, channels;
-//     unsigned char *source_img = stbi_load(filename, &width, &height, &channels, 0);
-//     if (source_img == NULL){ printf("Error loading image\n"); return 1; }
-//     
-//     // convert to grayscale
-//     unsigned char *gray_img = (unsigned char *)malloc(width * height * sizeof(unsigned char));
-//     if (channels == 1){ for (int i=0; i<width*height; i++){ gray_img[i] = source_img[i]; } }
-//     else{
-//         convert_to_grayscale(source_img, gray_img, width, height, channels);
-//         stbi_write_png(gray_image_name, width, height, 1, gray_img, width);
-//     }
-// 
-//     // compute Discrete Cosine Transform
-//     double *freq_img = malloc(width * height * sizeof(double));
-//     compute_DCT(gray_img, freq_img, width, height);
-//     spectrum_write_png(freq_img, spectrum_name, width, height);
-//     save_array_to_file(spectrum_bin_name, freq_img, width * height);
-
-    // use this to load a spectrum from .bin file
-    int width = 250, height = 250;
-    double *freq_img = malloc(width * height * sizeof(double));
-    load_array_from_file("pavimento_spectrum.bin", freq_img, width * height);
-
-    // modify spectrum
-    for (int v=0; v<height; v++){
-        for (int u=0; u<width; u++){
-            if (v<40 && u>10){
-                freq_img[u + v*width] = 0;
-            }
-        }
+    // load image
+    int width, height, channels;
+    unsigned char *source_img = stbi_load(filename, &width, &height, &channels, 0);
+    if (source_img == NULL){ printf("Error loading image\n"); return 1; }
+    
+    // convert to grayscale
+    unsigned char *gray_img = (unsigned char *)malloc(width * height * sizeof(unsigned char));
+    if (channels == 1){ for (int i=0; i<width*height; i++){ gray_img[i] = source_img[i]; } }
+    else{
+        convert_to_grayscale(source_img, gray_img, width, height, channels);
+        stbi_write_png(gray_image_name, width, height, 1, gray_img, width);
     }
-    spectrum_write_png(freq_img, modified_spectrum_name, width, height);
+
+    // compute Discrete Cosine Transform
+    double *freq_img = malloc(width * height * sizeof(double));
+    compute_DCT(gray_img, freq_img, width, height);
+    spectrum_write_png(freq_img, spectrum_name, width, height);
+    save_array_to_file(spectrum_bin_name, freq_img, width * height);
+
+    // // use this to load a spectrum from .bin file
+    // int width = 250, height = 250;
+    // double *freq_img = malloc(width * height * sizeof(double));
+    // load_array_from_file("pavimento_spectrum.bin", freq_img, width * height);
+
+    // // modify spectrum
+    // for (int v=0; v<height; v++){
+    //     for (int u=0; u<width; u++){
+    //         if (v<40 && u>10){
+    //             freq_img[u + v*width] = 0;
+    //         }
+    //     }
+    // }
+    // spectrum_write_png(freq_img, modified_spectrum_name, width, height);
     
     // compute inverse Discrete Cosine Transform
     unsigned char *img2 = (unsigned char *)malloc(sizeof(unsigned char) * width * height);

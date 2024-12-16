@@ -10,6 +10,7 @@ original image | ![](pavimento_spectrum.png) | ![](pavimento_gray.png)
 no high vertical frequencies | ![](pavimento_modified_spectrum1.png) | ![](pavimento_output1.png)
 no high horizontal frequencies | ![](pavimento_modified_spectrum2.png) | ![](pavimento_output2.png)
 original image | ![](pavimentozoom_spectrum.png) | ![](pavimentozoom_gray.png)
+original image | ![](palace_spectrum.png) | ![](palace_gray.png)
 original image | ![](g_spectrum.png)  |  ![](g_gray.png)
 ony low frequencies | ![](g_modified_spectrum0.png) | ![](g_output0.png)
 no low frequencies | ![](g_modified_spectrum1.png) | ![](g_output1.png)
@@ -20,4 +21,4 @@ horizontal frequences removed | ![](g_modified_spectrum4.png) | ![](g_output4.pn
 only low horizontal and high vertical frequencies | ![](g_modified_spectrum6.png) | ![](g_output6.png)
 only high horizontal and low vertical frequencies | ![](g_modified_spectrum7.png) | ![](g_output7.png)
 
-the gorilla took 15 minutes to spectralize.
+Alternatively one can also use the Matlab script
