@@ -88,8 +88,9 @@ int main(){
     // modify spectrum
     for (int v=0; v<height; v++){
         for (int u=0; u<width; u++){
-            if ((500-v)*(500-v) + (500-u)*(500-u) > 400*400){ freq_img[u + width*v] = 0; }
-            else { freq_img[u + width*v] *= 5.0; }
+            if (u*u + v*v < 50*50){
+                freq_img[u + v*width] = 0;
+            }
         }
     }
     spectrum_write_png(freq_img, modified_spectrum_name, width, height);
