@@ -46,7 +46,7 @@ int main(){
     clock_t begin = clock();
     // generate_bases(8, 16);
 
-    const char *name = "gorilla"; // Base name for images
+    const char *name = "pavimento"; // Base name for images
     const char *ext = ".png"; // Extension for images
     char filename[MAX_C];
     sprintf(filename, "%s%s", name, ext);
@@ -81,14 +81,14 @@ int main(){
 //     save_array_to_file(spectrum_bin_name, freq_img, width * height);
 
     // use this to load a spectrum from .bin file
-    int width = 500, height = 500;
+    int width = 250, height = 250;
     double *freq_img = malloc(width * height * sizeof(double));
-    load_array_from_file("gorilla_spectrum.bin", freq_img, width * height);
+    load_array_from_file("pavimento_spectrum.bin", freq_img, width * height);
 
     // modify spectrum
     for (int v=0; v<height; v++){
         for (int u=0; u<width; u++){
-            if (u*u + v*v < 50*50){
+            if (v<40 && u>10){
                 freq_img[u + v*width] = 0;
             }
         }
