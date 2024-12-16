@@ -15,9 +15,9 @@ ony low frequencies | ![](g_modified_spectrum0.png) | ![](g_output0.png)
 no low frequencies | ![](g_modified_spectrum1.png) | ![](g_output1.png)
 only high frequencies | ![](g_modified_spectrum2.png) | ![](g_output2.png)
 only very high frequencies | ![](g_modified_spectrum5.png) | ![](g_output5.png)
-vertical frequences removed | ![](g_modified_spectrum3.png) | ![](g_output3.png)
-horizontal frequences removed | ![](g_modified_spectrum4.png) | ![](g_output4.png)
-only low horizontal and high vertical frequencies | ![](g_modified_spectrum6.png) | ![](g_output6.png)
-only high horizontal and low vertical frequencies | ![](g_modified_spectrum7.png) | ![](g_output7.png)
+removed low frequences and high vertical frequences | ![](g_modified_spectrum3.png) | ![](g_output3.png)
+removed low frequences and high horizontal frequences | ![](g_modified_spectrum4.png) | ![](g_output4.png)
+??? | ![](g_modified_spectrum6.png) | ![](g_output6.png)
+??? | ![](g_modified_spectrum7.png) | ![](g_output7.png)
 
 the gorilla took 15 minutes to spectralize.
