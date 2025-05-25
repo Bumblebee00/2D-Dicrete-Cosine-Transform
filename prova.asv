@@ -21,3 +21,6 @@ title('Original Image');
 subplot(1, 2, 2);
 imshow(magnitude_spectrum, []);
 title('Magnitude Spectrum');
+
+
+

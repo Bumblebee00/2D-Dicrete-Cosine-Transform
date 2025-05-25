@@ -46,7 +46,7 @@ int main(){
     clock_t begin = clock();
     // generate_bases(8, 16);
 
-    const char *name = "palace"; // Base name for images
+    const char *name = "g"; // Base name for images
     const char *ext = ".png"; // Extension for images
     char filename[MAX_C];
     sprintf(filename, "%s%s", name, ext);
@@ -145,23 +145,36 @@ double alpha(int u, int width){
     return u==0 ? sqrt(1.0/width) : sqrt(2.0/width);
 }
 
-double compute_DCT_pixel(unsigned char *source_img, int u, int v, int width, int height){
+double compute_DCT_pixel(unsigned char *source_img, int u, int v, int width, int height, double* cosines){
     double r = 0;
     for (int y=0; y<height; y++){
         for (int x=0; x<width; x++){
-            r += (source_img[x + y*width] - 128.0) * cos((x + 0.5)*u*M_PI/width) * cos((y + 0.5)*v*M_PI/height);
+            // r += (source_img[x + y*width] - 128.0) * cos((x + 0.5)*u*M_PI/width) * cos((y + 0.5)*v*M_PI/height);
+            r += (source_img[x + y*width] - 128.0) * cosines[(2*x + 1)*u % 4*width] + cosines[(2*y + 1)*v % 4*width];
         }
     }
     return r * alpha(u, width) * alpha(v, height);
 }
 
 int compute_DCT(unsigned char *source_img, double* freq_img, int width, int height){
+    // assume width = height
+    // precompute the cosines
+    // (x + 0.5)u*pi/width % 2pi = pi*i/(2width) ->
+    // (x + 0.5)u*pi % 2pi*width = pi*i/2 ->
+    // (2x + 1)u % 4*width = i 
+    double *cosines = malloc(sizeof(double) * 4*width);
+    if (cosines == NULL){ printf("memory allocation failed"); exit(-1); }
+    for (int i=0; i<4*width; i++){ cosines[i] = cos(M_PI*i/(2*width)); }
+
+
     for (int v=0; v<height; v++){
         for (int u=0; u<width; u++){
-            freq_img[u + v*width] = compute_DCT_pixel(source_img, u, v, width, height);
+            freq_img[u + v*width] = compute_DCT_pixel(source_img, u, v, width, height, cosines);
         }
         pb((float)v/height);
     }
+
+    free(cosines);
     printf("\r%-110s\n", "DCT computation completed");
     
     return 0;
